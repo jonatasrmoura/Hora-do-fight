@@ -27,7 +27,10 @@
             $lutador[0]->status();
             $lutador[1]->status();
             $lutador[2]->status();
+
+            $lutador[3]->perderLuta();
             $lutador[3]->status();
+
             $lutador[4]->status();
             $lutador[5]->status();
 

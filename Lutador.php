@@ -1,6 +1,6 @@
 <?php 
-    require_once "Lutar.php";
-    class Lutador implements Lutar {
+
+    class Lutador {
         private $nome;
         private $nacionalidade;
         private $idade, $altura, $peso;
