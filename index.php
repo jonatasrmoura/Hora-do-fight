@@ -6,9 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-
+        <header>
+            <h1>Lutas dos Emojs</h1>
+        </header>
         <?php 
             require_once "Lutador.php";
+            require_once "Luta.php";
 
             $lutador = array();
 
@@ -20,21 +23,14 @@
 
             $lutador[3] = new Lutador("Dead Code", "Austrália", 28, 1.93, 81.6, 13, 0, 2);
 
-            $lutador[4] = new Lutador("Brutamonte", "Brasil", 28, 2.11, 95.2, 52, 0, 0);
+            $lutador[4] = new Lutador("Brutamonte", "Brasil", 28, 2.11, 119.3, 52, 0, 0);
 
-            $lutador[5] = new Lutador("Vanderley", "Bélgica", 32, 1.70, 82.6, 7, 20, 12);
+            $lutador[5] = new Lutador("Vanderley", "Bélgica", 32, 1.70, 105.7, 7, 20, 12);
 
-            $lutador[0]->status();
-            $lutador[1]->status();
-            $lutador[2]->status();
+            $UEC01 = new Luta;
+            $UEC01->marcarLuta($lutador[5], $lutador[4]);
+            $UEC01->lutar();
 
-            $lutador[3]->perderLuta();
-            $lutador[3]->status();
-
-            $lutador[4]->status();
-            $lutador[5]->status();
-
-            $lutador[4]->apresentar();
         ?>
 </body>
 </html>

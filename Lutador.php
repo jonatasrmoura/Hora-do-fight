@@ -1,5 +1,4 @@
 <?php 
-
     class Lutador {
         private $nome;
         private $nacionalidade;
@@ -112,7 +111,7 @@
             $this->setCategoria();
         }
         
-        private function setCategoria() {
+        public function setCategoria() {
         
             if ($this->peso < 52.2) 
             {
