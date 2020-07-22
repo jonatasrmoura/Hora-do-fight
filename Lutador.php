@@ -2,28 +2,55 @@
     class Lutador {
         private $nome;
         private $nacionalidade;
-        private $idade, $altura, $peso;
+        private $sexo, $idade, $altura, $peso;
         private $categoria, $vitorias, $derrotas, $empates;
 
 
         /*====== Lutar ======== */
         public function apresentar() {
-            echo "<p>----------------------------</p>";
-            echo "<p>CHEGOU A HORA! O Lutador " .$this->getNome();
-            echo " veio diretamente de " .$this->getNacionalidade();
-            echo ", tem " .$this->getIdade() ." anos, pesa " .$this->getPeso() ." Kg ";
-            echo "e com " .$this->getAltura() ." m de altura.";
-            echo "<br>Ele tem " .$this->getVitorias() ." vítorias, ";
-            echo $this->getDerrotas() ." derrotas ";
-            echo $this->getEmpates() ." empates</p>";
+            if ($this->sexo == "M") 
+            {
+                echo "<h4>Apresentação do Lutador " .$this->getNome() ."</h4>";
+
+                echo "<p>CHEGOU A HORA! O Lutador " .$this->getNome();
+                echo " veio diretamente de " .$this->getNacionalidade();
+                echo ", ele tem " .$this->getIdade() ." anos, pesa " .$this->getPeso() ." Kg ";
+                echo "e com " .$this->getAltura() ." m de altura.";
+                echo "<br>Com " .$this->getVitorias() ." vítorias, ";
+                echo $this->getDerrotas() ." derrotas e ";
+                echo $this->getEmpates() ." empates</p>";
+            }
+            elseif ($this->sexo == "F") 
+            {
+                echo "<h4>Apresentação da Lutadora " .$this->getNome() ."</h4>";
+
+                echo "<p>CHEGOU A HORA! A Lutadora " .$this->getNome();
+                echo " veio diretamente de " .$this->getNacionalidade();
+                echo ", ela tem " .$this->getIdade() ." anos, pesa " .$this->getPeso() ." Kg ";
+                echo "e com " .$this->getAltura() ." m de altura.";
+                echo "<br>Com " .$this->getVitorias() ." vítorias, ";
+                echo $this->getDerrotas() ." derrotas e ";
+                echo $this->getEmpates() ." empates</p>";
+            }
         }
 
         public function status() {
-            echo "<p>----------------------------/</p>";
-            echo "<p>" .$this->getNome() ." é um peso " .$this->getCategoria();
-            echo " e já ganhou " .$this->getVitorias() ." vezes,";
-            echo " perdeu " .$this->getDerrotas() ." vezes e";
-            echo " empatou " .$this->getEmpates() ." vezes!</p>";
+            if ($this->sexo == "M")
+            {
+                echo "<h4>Status do Lutador " .$this->getNome() ."</h4>";
+                echo "<p>" .$this->getNome() ." é um peso " .$this->getCategoria();
+                echo " e já ganhou " .$this->getVitorias() ." vezes,";
+                echo " perdeu " .$this->getDerrotas() ." vezes e";
+                echo " empatou " .$this->getEmpates() ." vezes!</p>";
+            }
+            elseif ($this->sexo == "F") 
+            {
+                echo "<h4>Status da Lutadora " .$this->getNome() ."</h4>";
+                echo "<p>" .$this->getNome() ." é um peso " .$this->getCategoria();
+                echo " e já ganhou " .$this->getVitorias() ." vezes,";
+                echo " perdeu " .$this->getDerrotas() ." vezes e";
+                echo " empatou " .$this->getEmpates() ." vezes!</p>";
+            }
         }
 
         public function ganharLuta() {
@@ -41,10 +68,11 @@
 
         // Métodos Especiais.
 
-        public function __construct($no, $na, $id, $al, $pe, $vi, $de, $em)
+        public function __construct($no, $na, $sex, $id, $al, $pe, $vi, $de, $em)
         {
             $this->nome = $no;
             $this->nacionalidade = $na;
+            $this->sexo = $sex;
             $this->idade = $id;
             $this->altura = $al;
             $this->setPeso($pe);
@@ -59,6 +87,10 @@
         
         public function getNacionalidade() {
             return $this->nacionalidade;
+        }
+
+        public function getSexo() {
+            return $this->sexo;
         }
         
         public function getIdade() {
@@ -97,6 +129,18 @@
         public function setNacionalidade($na) {
             $this->nacionalidade = $na;
         }
+
+        private function setSexo() {
+            if ($this->sexo === "M") {
+                $this->sexo = "Masculino";
+            }
+            elseif ($this->sexo === "F") {
+                $this->sexo = "Feminino";
+            }
+            else {
+                $this->sexo = "Sexo Inválido";
+            }
+        }
         
         public function setIdade($id) {
             $this->idade = $id;
@@ -111,7 +155,7 @@
             $this->setCategoria();
         }
         
-        public function setCategoria() {
+        private function setCategoria() {
         
             if ($this->peso < 52.2) 
             {

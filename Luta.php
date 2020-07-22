@@ -8,7 +8,7 @@
         private $aprovada;
 
         public function marcarLuta($l1, $l2) {
-            if ($l1->getCategoria() === $l2->getCategoria() && ($l1 != $l2)) {
+            if ($l1->getCategoria() === $l2->getCategoria() && ($l1 != $l2) && $l1->getSexo() === $l2->getSexo()) {
                 $this->aprovada = true;
                 $this->desafiado = $l1;
                 $this->desafiante = $l2;
@@ -27,19 +27,19 @@
 
                 switch($vencedor) {
                     case 0: // EMPATE
-                        echo "<p>Empatou!</p>";
+                        echo "<h3>Empatou!</h3>";
                         $this->desafiado->empatarLuta();
                         $this->desafiante->empatarLuta();
                     break;
 
                     case 1: // Ganhou o desafiado
-                        echo "<p>" .$this->desafiado->getNome() ." Venceu a luta!</p>";
+                        echo "<h3>" .$this->desafiado->getNome() ." Venceu a luta!</h3>";
                         $this->desafiado->ganharLuta();
                         $this->desafiante->perderLuta();
                     break;
 
                     case 2: // Ganhou o desafiante
-                        echo "<p>" .$this->desafiante->getNome() ." Venceu a Luta!</p>";
+                        echo "<h3>" .$this->desafiante->getNome() ." Venceu a Luta!</h3>";
                         $this->desafiado->perderLuta();
                         $this->desafiante->ganharLuta();
                     break;
